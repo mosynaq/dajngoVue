@@ -1,3 +1,5 @@
 django
 djangorestframework
 psycopg2
+faker
+# text-unidecode, six, python-dateutil, faker
