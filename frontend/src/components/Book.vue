@@ -2,7 +2,9 @@
   <sui-card>
     <sui-image :src="this.image" height="150"/>
     <sui-card-content>
-      <sui-card-header>{{ this.title }}</sui-card-header>
+      <a class="header">
+        {{ this.title }}
+      </a>
       <sui-card-meta>
         By {{ this.author.last_name + ", " + this.author.first_name }}
       </sui-card-meta>
@@ -56,6 +58,16 @@ export default {
     author: {
       type: Object,
       default: null
+    }
+  },
+  filters: {
+    titleCase: function (value) {
+      let sentence = value.toLowerCase().split(" ");
+      for (var i = 0; i < sentence.length; i++) {
+        sentence[i] = sentence[i][0].toUpperCase() + sentence[i].slice(1);
+      }
+      sentence=sentence.join(" ");
+      return sentence;
     }
   }
 };

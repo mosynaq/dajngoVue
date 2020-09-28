@@ -51,16 +51,6 @@ export default {
           this.worksOfArtPrevPage = response.data.previous;
           this.worksOfArtNextPage = response.data.next;
         })
-  },
-  filters: {
-    titleCase: function (value) {
-      let sentence = value.toLowerCase().split(" ");
-      for (var i = 0; i < sentence.length; i++) {
-        sentence[i] = sentence[i][0].toUpperCase() + sentence[i].slice(1);
-      }
-      document.write(sentence.join(" "));
-      return sentence;
-    }
   }
 };
 </script>
