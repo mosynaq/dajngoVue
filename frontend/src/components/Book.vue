@@ -22,7 +22,7 @@
       <span class="right floated">
           <sui-icon name="dollar"/>
           {{ this.price }}
-        </span>
+      </span>
     </sui-card-content>
   </sui-card>
 </template>
@@ -66,7 +66,7 @@ export default {
       for (var i = 0; i < sentence.length; i++) {
         sentence[i] = sentence[i][0].toUpperCase() + sentence[i].slice(1);
       }
-      sentence=sentence.join(" ");
+      sentence = sentence.join(" ");
       return sentence;
     }
   }
@@ -75,6 +75,6 @@ export default {
 
 <style scoped>
 .work-of-art-type-label {
-  opacity: 0.7
+  opacity: 0.5
 }
 </style>
