@@ -1,23 +1,29 @@
 <template>
   <div id="app">
-    <sui-menu fixed="top" :borderless="true">
-      <sui-menu-item :link="true" :icon="true">
-        <sui-icon name="bars"/>
-      </sui-menu-item>
+    <sui-menu fixed="top" :borderless="true" >
+      <router-link class="item" to="/" active-class="active" exact>
+        <sui-icon name="home"/>
+      </router-link>
+      <router-link class="item" to="/worksofart/" active-class="active">
+        <sui-icon name="user"/>
+        Works of Art
+      </router-link>
       <sui-menu-item>
         <sui-checkbox :toggle="true" v-model="booksLoaded">books ready?</sui-checkbox>
       </sui-menu-item>
-      <sui-menu-item position="right" :link="previvusPaginationEnabled" :disabled="!previousPaginationEnabled"
+      <sui-menu-item position="right" :link="previousPaginationEnabled" :disabled="!previousPaginationEnabled"
                      @click="goToPreviousPage();">
         <sui-icon name="left angle"/>
       </sui-menu-item>
       <sui-menu-item :link="nextPaginationEnabled" :disabled="!nextPaginationEnabled" @click="goToNextPage();">
         <sui-icon name="right angle"/>
       </sui-menu-item>
-
     </sui-menu>
     <sui-container class="main-content">
-      <books :items="worksOfArt" :booksLoaded="booksLoaded"></books>
+      <!--      <books :items="worksOfArt" :booksLoaded="booksLoaded"></books>-->
+      <router-view
+          :items="worksOfArt" :booksLoaded="booksLoaded"
+      ></router-view>
     </sui-container>
   </div>
 </template>
@@ -28,7 +34,7 @@ import Vue from "vue";
 import SuiVue from "semantic-ui-vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
-import books from "./components/Books.vue";
+// import books from "./components/Books.vue";
 
 import config from "../config.json"
 
@@ -39,8 +45,8 @@ Vue.use(VueAxios, axios);
 export default {
   name: "app",
   components: {
-    // SuiVue,
-    books,
+    // books,
+    // hello
   },
   data() {
     return {

@@ -30,7 +30,7 @@ export default {
   },
   props: {
     items: {
-      type: Object,
+      type: Array,
       default: null
     },
     booksLoaded: {
