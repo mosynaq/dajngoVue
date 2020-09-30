@@ -1,8 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 // import Home from "../views/Home.vue";
-import books from "../components/Books.vue"
-import hello from "../components/hello.vue"
+import authors from "../components/Authors";
+import books from "../components/Books.vue";
+import hello from "../components/hello.vue";
 
 Vue.use(VueRouter);
 
@@ -30,7 +31,8 @@ const routes = [
     },
     {
         path: "/authors/",
-        name: "Authors"
+        name: "Authors",
+        component: authors
     }
 ];
 

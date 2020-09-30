@@ -1,13 +1,21 @@
 <template>
   <div id="app">
-    <sui-menu fixed="top" :borderless="true" >
+    <sui-menu fixed="top" :borderless="true">
       <router-link class="item" to="/" active-class="active" exact>
         <sui-icon name="home"/>
       </router-link>
       <router-link class="item" to="/worksofart/" active-class="active">
+        <sui-icon name="book"/>
+        Works of Art
+      </router-link>
+
+
+      <router-link class="item" to="/authors/" active-class="active">
         <sui-icon name="user"/>
         Works of Art
       </router-link>
+
+
       <sui-menu-item>
         <sui-checkbox :toggle="true" v-model="booksLoaded">books ready?</sui-checkbox>
       </sui-menu-item>
@@ -21,9 +29,7 @@
     </sui-menu>
     <sui-container class="main-content">
       <!--      <books :items="worksOfArt" :booksLoaded="booksLoaded"></books>-->
-      <router-view
-          :items="worksOfArt" :booksLoaded="booksLoaded"
-      ></router-view>
+      <router-view :booksLoaded="booksLoaded" :authors="authors"></router-view>
     </sui-container>
   </div>
 </template>
@@ -34,9 +40,6 @@ import Vue from "vue";
 import SuiVue from "semantic-ui-vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
-// import books from "./components/Books.vue";
-
-import config from "../config.json"
 
 Vue.use(SuiVue);
 Vue.use(VueAxios, axios);
@@ -50,10 +53,8 @@ export default {
   },
   data() {
     return {
+      authors: null,
       booksLoaded: true,
-      worksOfArt: null,
-      worksOfArtPrevPage: null,
-      worksOfArtNextPage: null,
     }
   },
   methods: {
@@ -73,15 +74,7 @@ export default {
       this.goToPage(this.worksOfArtPrevPage)
     }
   },
-  mounted() {
-    axios
-        .get(config.api_worksOfArt_url)
-        .then(response => {
-          this.worksOfArt = response.data.results;
-          this.worksOfArtPrevPage = response.data.previous;
-          this.worksOfArtNextPage = response.data.next;
-        })
-  },
+
   computed: {
     previousPaginationEnabled: function () {
       return this.worksOfArtPrevPage !== null;
