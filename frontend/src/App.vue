@@ -2,48 +2,50 @@
   <div id="app">
     <sui-menu fixed="top" :borderless="true">
       <router-link class="item" to="/" active-class="active" exact>
-        <sui-icon name="home"/>
+        <sui-icon name="home" />
       </router-link>
       <router-link class="item" to="/worksofart/" active-class="active">
-        <sui-icon name="book"/>
+        <sui-icon name="book" />
         Works of Art
       </router-link>
-
 
       <router-link class="item" to="/authors/" active-class="active">
-        <sui-icon name="user"/>
-        Works of Art
+        <sui-icon name="user" />
+        Authors
       </router-link>
 
-
-      <sui-menu-item>
-        <sui-checkbox :toggle="true" v-model="booksLoaded">books ready?</sui-checkbox>
+      <sui-menu-item
+        position="right"
+        :link="previousPaginationEnabled"
+        :disabled="!previousPaginationEnabled"
+        @click="goToPreviousPage()"
+      >
+        <sui-icon name="left angle" />
       </sui-menu-item>
-      <sui-menu-item position="right" :link="previousPaginationEnabled" :disabled="!previousPaginationEnabled"
-                     @click="goToPreviousPage();">
-        <sui-icon name="left angle"/>
-      </sui-menu-item>
-      <sui-menu-item :link="nextPaginationEnabled" :disabled="!nextPaginationEnabled" @click="goToNextPage();">
-        <sui-icon name="right angle"/>
+      <sui-menu-item
+        :link="nextPaginationEnabled"
+        :disabled="!nextPaginationEnabled"
+        @click="goToNextPage()"
+      >
+        <sui-icon name="right angle" />
       </sui-menu-item>
     </sui-menu>
     <sui-container class="main-content">
-      <!--      <books :items="worksOfArt" :booksLoaded="booksLoaded"></books>-->
       <router-view :booksLoaded="booksLoaded" :authors="authors"></router-view>
     </sui-container>
   </div>
 </template>
 
 <script>
-
 import Vue from "vue";
 import SuiVue from "semantic-ui-vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import VueMoment from "vue-moment";
 
 Vue.use(SuiVue);
+Vue.use(VueMoment);
 Vue.use(VueAxios, axios);
-
 
 export default {
   name: "app",
@@ -54,37 +56,34 @@ export default {
   data() {
     return {
       authors: null,
-      booksLoaded: true,
-    }
+      booksLoaded: true
+    };
   },
   methods: {
     goToPage(url) {
-      axios
-          .get(url)
-          .then(response => {
-            this.worksOfArt = response.data.results;
-            this.worksOfArtPrevPage = response.data.previous;
-            this.worksOfArtNextPage = response.data.next;
-          })
+      axios.get(url).then(response => {
+        this.worksOfArt = response.data.results;
+        this.worksOfArtPrevPage = response.data.previous;
+        this.worksOfArtNextPage = response.data.next;
+      });
     },
     goToNextPage() {
-      this.goToPage(this.worksOfArtNextPage)
+      this.goToPage(this.worksOfArtNextPage);
     },
     goToPreviousPage() {
-      this.goToPage(this.worksOfArtPrevPage)
+      this.goToPage(this.worksOfArtPrevPage);
     }
   },
 
   computed: {
-    previousPaginationEnabled: function () {
+    previousPaginationEnabled: function() {
       return this.worksOfArtPrevPage !== null;
     },
-    nextPaginationEnabled: function () {
+    nextPaginationEnabled: function() {
       return this.worksOfArtNextPage !== null;
     }
   }
-}
-;
+};
 </script>
 
 <style lang="scss">

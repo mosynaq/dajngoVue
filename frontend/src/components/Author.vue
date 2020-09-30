@@ -1,15 +1,12 @@
 <template>
-  <sui-card>
+  <sui-card :horizontal="true">
     <sui-card-content>
-<!--      <sui-image :src="this.image" height="150"/>-->
-      <a class="header">
-        {{ this.last_name }}, {{ this.first_name }}
-      </a>
+      <!--      <sui-image :src="this.image" height="150"/>-->
+      <a class="header"> {{ this.last_name }}, {{ this.first_name }} </a>
 
       <sui-card-meta>
-        Born {{ Date(this.date_of_birth) }}
+        Born {{ this.date_of_birth | moment("YYYY, Qo MMMM") }}
       </sui-card-meta>
-
       <sui-card-description>
         {{ this.bio }}
       </sui-card-description>
@@ -18,9 +15,6 @@
 </template>
 
 <script>
-
-
-
 export default {
   name: "author",
   props: {
@@ -40,13 +34,8 @@ export default {
       type: String,
       default: null
     }
-  },
-  filters:{
-
   }
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

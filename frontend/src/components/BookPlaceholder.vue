@@ -11,8 +11,17 @@
           <div class="long line"></div>
           <div class="medium line"></div>
         </div>
-        <sui-label attached="top right" color="black" class="work-of-art-type-label">
-        <sui-icon name="question mark" :fitted="true" size="small" class="work-of-art-type-label"/>
+        <sui-label
+          attached="top right"
+          color="black"
+          class="work-of-art-type-label"
+        >
+          <sui-icon
+            name="question mark"
+            :fitted="true"
+            size="small"
+            class="work-of-art-type-label"
+          />
         </sui-label>
         <div class="paragraph">
           <div class="very long line"></div>
@@ -24,9 +33,9 @@
       </div>
     </div>
     <div class="extra content">
-      <sui-rating :rating="this.rating" :max-rating="5" :disabled="true"/>
+      <sui-rating :rating="this.rating" :max-rating="5" :disabled="true" />
       <div class="right floated">
-        <sui-icon name="dollar"/>
+        <sui-icon name="dollar" />
         <div class="short line"></div>
       </div>
     </div>
@@ -36,7 +45,7 @@
 <script>
 export default {
   name: "book_placeholder"
-}
+};
 </script>
 
 <style scoped>
