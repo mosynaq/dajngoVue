@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="extra content">
-      <sui-rating :rating="this.rating" :max-rating="5" :disabled="true" />
+      <sui-rating :max-rating="5" :disabled="true" />
       <div class="right floated">
         <sui-icon name="dollar" />
         <div class="short line"></div>

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <sui-menu fixed="top" :borderless="true">
+    <sui-menu fixed="top" :borderless="true" :inverted="true">
       <router-link class="item" to="/" active-class="active" exact>
         <sui-icon name="home" />
       </router-link>
@@ -30,9 +30,9 @@
         <sui-icon name="right angle" />
       </sui-menu-item>
     </sui-menu>
-    <sui-container class="main-content">
+    <div class="main-content">
       <router-view :booksLoaded="booksLoaded" :authors="authors"></router-view>
-    </sui-container>
+    </div>
   </div>
 </template>
 
