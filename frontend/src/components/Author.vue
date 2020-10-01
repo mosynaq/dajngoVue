@@ -1,5 +1,5 @@
 <template>
-  <sui-card :horizontal="true">
+  <sui-card>
     <sui-card-content>
       <!--      <sui-image :src="this.image" height="150"/>-->
       <a class="header"> {{ this.last_name }}, {{ this.first_name }} </a>

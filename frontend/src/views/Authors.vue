@@ -1,28 +1,28 @@
 <template>
   <sui-grid :columns="2" :padded="true">
-    <sui-grid-column :width="2">
+    <sui-grid-column :width="4">
       <vue-query-builder :rules="rules"></vue-query-builder>
     </sui-grid-column>
 
-    <sui-grid-column :width="14">
+    <sui-grid-column :width="12">
       <sui-container>
         <sui-card-group
-          :stackable="true"
-          class="centered doubling"
-          v-if="authors"
+            :stackable="true"
+            class="centered doubling"
+            v-if="authors"
         >
           <author
-            v-for="author in authors"
-            :key="author.id"
-            :first_name="author.first_name"
-            :last_name="author.last_name"
-            :date_of_birth="author.date_of_birth"
-            :bio="author.bio"
+              v-for="author in authors"
+              :key="author.id"
+              :first_name="author.first_name"
+              :last_name="author.last_name"
+              :date_of_birth="author.date_of_birth"
+              :bio="author.bio"
           />
         </sui-card-group>
         <div v-else>
           <sui-card-group :stackable="true" class="centered doubling">
-            <author_placeholder v-for="i in 6" :key="i" />
+            <author_placeholder v-for="i in 6" :key="i"/>
           </sui-card-group>
         </div>
       </sui-container>
@@ -47,7 +47,28 @@ export default {
   data() {
     return {
       authors: null,
-      rules: []
+      rules: [
+        {
+          type: "text",
+          id: "first_name",
+          label: "First Name",
+        },
+        {
+          type: "text",
+          id: "last_name",
+          label: "Last Name",
+        },
+        {
+          type:"text",
+          id:"date_of_birth",
+          label: "Date of Birth"
+        },
+        {
+          type: "text",
+          id: "bio",
+          label: "Biography",
+        },
+      ]
     };
   },
   mounted() {
