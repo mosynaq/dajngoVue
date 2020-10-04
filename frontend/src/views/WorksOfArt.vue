@@ -8,6 +8,7 @@
       <WorkOfArt
         v-for="workOfArt in worksOfArt"
         :key="workOfArt.id"
+        :id="workOfArt.id"
         :title="workOfArt.title"
         :price="workOfArt.price"
         :description="workOfArt.description"
@@ -34,7 +35,7 @@ import WorkOfArtPlaceholder from "@/components/WorkOfArtPlaceholder.vue";
 import axios from "axios";
 
 export default {
-  name: "books",
+  name: "WorksOfArt",
   components: {
     WorkOfArt,
     WorkOfArtPlaceholder

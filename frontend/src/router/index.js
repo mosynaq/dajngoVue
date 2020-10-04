@@ -2,7 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 // import Home from "../views/Home.vue";
 import authors from "../views/Authors";
-import books from "../views/WorksOfArt.vue";
+import WorksOfArt from "../views/WorksOfArt.vue";
+import WorkOfArtSingle from "../views/WorkOfArtSingle.vue";
 import home from "../views/home.vue";
 import author_single from "../views/AuthorSingle";
 
@@ -17,17 +18,12 @@ const routes = [
   {
     path: "/worksofart/",
     name: "worksofart",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () =>
-    //   import(/* webpackChunkName: "about" */ "../views/worksofart.vue")
-    component: books
+    component: WorksOfArt
   },
   {
     path: "/worksofart/:id/",
-    name: "works_of_art_single",
-    component: books
+    name: "WorksOfArtSingle",
+    component: WorkOfArtSingle
   },
   {
     path: "/authors/",

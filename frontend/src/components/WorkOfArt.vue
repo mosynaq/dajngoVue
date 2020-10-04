@@ -2,9 +2,12 @@
   <sui-card>
     <sui-image :src="this.image" height="150" />
     <sui-card-content>
-      <a class="header">
+      <router-link
+        class="header"
+        :to="{ name: 'WorksOfArtSingle', params: { id: this.id } }"
+      >
         {{ this.title }}
-      </a>
+      </router-link>
       <sui-card-meta>
         By {{ this.author.last_name + ", " + this.author.first_name }}
       </sui-card-meta>
@@ -40,6 +43,10 @@
 export default {
   name: "WorkOfArt",
   props: {
+    id: {
+      type: Number,
+      default: null
+    },
     title: {
       type: String,
       default: "some title"
