@@ -5,7 +5,7 @@
       class="centered doubling"
       v-if="worksOfArt"
     >
-      <book
+      <WorkOfArt
         v-for="workOfArt in worksOfArt"
         :key="workOfArt.id"
         :title="workOfArt.title"
@@ -21,7 +21,7 @@
 
     <div v-else>
       <sui-card-group :stackable="true" class="centered doubling">
-        <book_placeholder v-for="i in 6" :key="i" />
+        <WorkOfArtPlaceholder v-for="i in 6" :key="i" />
       </sui-card-group>
     </div>
   </div>
@@ -29,15 +29,15 @@
 
 <script>
 import config from "../../config.json";
-import book from "../components/Book.vue";
-import book_placeholder from "@/components/BookPlaceholder.vue";
+import WorkOfArt from "../components/WorkOfArt.vue";
+import WorkOfArtPlaceholder from "@/components/WorkOfArtPlaceholder.vue";
 import axios from "axios";
 
 export default {
   name: "books",
   components: {
-    book,
-    book_placeholder
+    WorkOfArt,
+    WorkOfArtPlaceholder
   },
   data() {
     return {

@@ -38,7 +38,7 @@
 
 <script>
 export default {
-  name: "book",
+  name: "WorkOfArt",
   props: {
     title: {
       type: String,
@@ -67,16 +67,6 @@ export default {
     author: {
       type: Object,
       default: null
-    }
-  },
-  filters: {
-    titleCase: function(value) {
-      let sentence = value.toLowerCase().split(" ");
-      for (var i = 0; i < sentence.length; i++) {
-        sentence[i] = sentence[i][0].toUpperCase() + sentence[i].slice(1);
-      }
-      sentence = sentence.join(" ");
-      return sentence;
     }
   }
 };

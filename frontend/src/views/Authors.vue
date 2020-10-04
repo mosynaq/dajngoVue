@@ -16,28 +16,26 @@
     </sui-grid-column>
 
     <sui-grid-column :width="12">
-      <sui-container>
-        <sui-card-group
-          :stackable="true"
-          class="centered doubling"
-          v-if="authors"
-        >
-          <author
-            v-for="author in authors"
-            :key="author.id"
-            :id="author.id"
-            :first_name="author.first_name"
-            :last_name="author.last_name"
-            :date_of_birth="author.date_of_birth"
-            :bio="author.bio"
-          />
+      <sui-card-group
+        :stackable="true"
+        class="centered doubling"
+        v-if="authors"
+      >
+        <author
+          v-for="author in authors"
+          :key="author.id"
+          :id="author.id"
+          :first_name="author.first_name"
+          :last_name="author.last_name"
+          :date_of_birth="author.date_of_birth"
+          :bio="author.bio"
+        />
+      </sui-card-group>
+      <div v-else>
+        <sui-card-group :stackable="true" class="centered doubling">
+          <author_placeholder v-for="i in 6" :key="i" />
         </sui-card-group>
-        <div v-else>
-          <sui-card-group :stackable="true" class="centered doubling">
-            <author_placeholder v-for="i in 6" :key="i" />
-          </sui-card-group>
-        </div>
-      </sui-container>
+      </div>
     </sui-grid-column>
   </sui-grid>
 </template>
@@ -59,6 +57,8 @@ export default {
   data() {
     return {
       authors: null,
+      nextPageUrl: null,
+      prevPageUrl: null,
       rules: [
         {
           type: "text",
@@ -85,11 +85,23 @@ export default {
     };
   },
   mounted() {
-    axios.get(config.api_authors_url).then(response => {
-      this.authors = response.data.results;
-    });
+    this.goToPage(config.api_authors_url);
   },
-  props: {}
+  methods: {
+    goToPage(url) {
+      axios.get(url).then(response => {
+        this.authors = response.data.results;
+        this.nextPageUrl = response.data.next;
+        this.prevPageUrl = response.data.previous;
+      });
+    },
+    goToNextPage() {
+      this.goToPage(this.nextPageUrl);
+    },
+    goToPrevPage() {
+      this.goToPage(this.prevPageUrl);
+    }
+  }
 };
 </script>
 

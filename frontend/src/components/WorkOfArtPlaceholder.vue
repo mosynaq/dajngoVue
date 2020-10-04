@@ -44,7 +44,7 @@
 
 <script>
 export default {
-  name: "book_placeholder"
+  name: "WorkOfArtPlaceholder"
 };
 </script>
 

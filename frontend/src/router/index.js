@@ -2,9 +2,9 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 // import Home from "../views/Home.vue";
 import authors from "../views/Authors";
-import books from "../views/Books.vue";
-import hello from "../views/hello.vue";
-import author_single from "../components/AuthorSingle";
+import books from "../views/WorksOfArt.vue";
+import home from "../views/home.vue";
+import author_single from "../views/AuthorSingle";
 
 Vue.use(VueRouter);
 
@@ -12,7 +12,7 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: hello
+    component: home
   },
   {
     path: "/worksofart/",

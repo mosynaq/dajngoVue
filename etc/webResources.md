@@ -1,0 +1,1 @@
+1. https://stackoverflow.com/questions/47004702/how-to-add-a-bunch-of-global-filters-in-vue-js

@@ -5,7 +5,6 @@ import router from "./router";
 
 import "animate.css/animate.css";
 import "semantic-ui-css/semantic.css"; // may need to change the path
-
 Vue.config.productionTip = false;
 
 new Vue({
