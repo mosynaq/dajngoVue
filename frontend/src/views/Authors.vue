@@ -1,28 +1,40 @@
 <template>
   <sui-grid :columns="2" :padded="true">
     <sui-grid-column :width="4">
-      <vue-query-builder :rules="rules"></vue-query-builder>
+      <vue-query-builder :rules="rules" v-if="authors" v-model="query" />
+
+      <div class="ui placeholder" v-else>
+        <div class="header">
+          <div class="very long line"></div>
+          <div class="very long line"></div>
+          <div class="very long line"></div>
+          <div class="very long line"></div>
+          <div class="very long line"></div>
+          <div class="medium line"></div>
+        </div>
+      </div>
     </sui-grid-column>
 
     <sui-grid-column :width="12">
       <sui-container>
         <sui-card-group
-            :stackable="true"
-            class="centered doubling"
-            v-if="authors"
+          :stackable="true"
+          class="centered doubling"
+          v-if="authors"
         >
           <author
-              v-for="author in authors"
-              :key="author.id"
-              :first_name="author.first_name"
-              :last_name="author.last_name"
-              :date_of_birth="author.date_of_birth"
-              :bio="author.bio"
+            v-for="author in authors"
+            :key="author.id"
+            :id="author.id"
+            :first_name="author.first_name"
+            :last_name="author.last_name"
+            :date_of_birth="author.date_of_birth"
+            :bio="author.bio"
           />
         </sui-card-group>
         <div v-else>
           <sui-card-group :stackable="true" class="centered doubling">
-            <author_placeholder v-for="i in 6" :key="i"/>
+            <author_placeholder v-for="i in 6" :key="i" />
           </sui-card-group>
         </div>
       </sui-container>
@@ -51,24 +63,25 @@ export default {
         {
           type: "text",
           id: "first_name",
-          label: "First Name",
+          label: "First Name"
         },
         {
           type: "text",
           id: "last_name",
-          label: "Last Name",
+          label: "Last Name"
         },
         {
-          type:"text",
-          id:"date_of_birth",
+          type: "text",
+          id: "date_of_birth",
           label: "Date of Birth"
         },
         {
           type: "text",
           id: "bio",
-          label: "Biography",
-        },
-      ]
+          label: "Biography"
+        }
+      ],
+      query: {}
     };
   },
   mounted() {

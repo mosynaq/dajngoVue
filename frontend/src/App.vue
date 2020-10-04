@@ -31,7 +31,7 @@
       </sui-menu-item>
     </sui-menu>
     <div class="main-content">
-      <router-view :booksLoaded="booksLoaded" :authors="authors"></router-view>
+      <router-view />
     </div>
   </div>
 </template>

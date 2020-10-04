@@ -4,18 +4,19 @@ import VueRouter from "vue-router";
 import authors from "../views/Authors";
 import books from "../views/Books.vue";
 import hello from "../views/hello.vue";
+import author_single from "../components/AuthorSingle";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "home",
     component: hello
   },
   {
     path: "/worksofart/",
-    name: "Works of Art",
+    name: "worksofart",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -25,13 +26,18 @@ const routes = [
   },
   {
     path: "/worksofart/:id/",
-    name: "A single Work of Art",
+    name: "works_of_art_single",
     component: books
   },
   {
     path: "/authors/",
-    name: "Authors",
+    name: "authors",
     component: authors
+  },
+  {
+    path: "/authors/:id/",
+    name: "author_single",
+    component: author_single
   }
 ];
 
