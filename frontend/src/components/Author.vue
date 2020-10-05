@@ -13,7 +13,7 @@
         Born {{ this.date_of_birth | moment("YYYY, Qo MMMM") }}
       </sui-card-meta>
       <sui-card-description>
-        {{ this.bio }}
+        {{ this.bio | truncate(250) }}
       </sui-card-description>
     </sui-card-content>
   </sui-card>

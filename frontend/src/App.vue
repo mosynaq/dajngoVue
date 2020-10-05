@@ -14,7 +14,10 @@
         Authors
       </router-link>
 
-      <sui-menu-item position="right">
+      <sui-menu-item position="right" :link="true">
+        <sui-icon name="search" />
+      </sui-menu-item>
+      <sui-menu-item>
         <sui-icon name="left angle" />
       </sui-menu-item>
       <sui-menu-item>
@@ -38,11 +41,14 @@ import SuiVue from "semantic-ui-vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import VueMoment from "vue-moment";
+import Vue2Filters from "vue2-filters";
+
 import filters from "./filters";
 
 Vue.use(SuiVue);
 Vue.use(VueMoment);
 Vue.use(VueAxios, axios);
+Vue.use(Vue2Filters);
 Vue.use(filters);
 
 export default {
