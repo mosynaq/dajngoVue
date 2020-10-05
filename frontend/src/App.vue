@@ -22,7 +22,12 @@
       </sui-menu-item>
     </sui-menu>
     <div class="main-content">
-      <router-view />
+      <transition
+        name="custom"
+        enter-active-class="animate__animated  animate__fadeIn"
+      >
+        <router-view />
+      </transition>
     </div>
   </div>
 </template>
