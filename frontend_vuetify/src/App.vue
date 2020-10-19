@@ -1,68 +1,81 @@
 <template>
-  <div id="app">
-    <sui-menu fixed="top" :borderless="true" :inverted="true">
-      <router-link class="item" to="/" active-class="active" exact>
-        <sui-icon name="home" />
-      </router-link>
-      <router-link class="item" to="worksofart" active-class="active">
-        <sui-icon name="book" />
-        Works of Art
-      </router-link>
+  <v-app id="inspire">
+    <v-app-bar app color="white" flat>
+      <v-container class="py-0 fill-height">
+        <v-btn text>
+          <router-link to="/">
+            <v-icon>mdi-home</v-icon>
+            Home</router-link>
+        </v-btn>
+        <v-btn text>
+          <router-link to="authors">
+            <v-icon>mdi-account-edit</v-icon>
+            Authors
+          </router-link>
+        </v-btn>
+        <v-btn text>
+          <router-link to="worksofart">
+            <v-icon>mdi-book-multiple</v-icon>Works of Art</router-link>
+        </v-btn>
 
-      <router-link class="item" to="authors" active-class="active">
-        <sui-icon name="user" />
-        Authors
-      </router-link>
+        <v-spacer></v-spacer>
 
-      <sui-menu-item position="right" :link="true">
-        <sui-icon name="search" />
-      </sui-menu-item>
-      <sui-menu-item>
-        <sui-icon name="left angle" />
-      </sui-menu-item>
-      <sui-menu-item>
-        <sui-icon name="right angle" />
-      </sui-menu-item>
-    </sui-menu>
-    <div class="main-content">
-      <transition
-        name="custom"
-        enter-active-class="animate__animated  animate__fadeIn"
-      >
-        <router-view />
-      </transition>
-    </div>
-  </div>
+        <!--        <v-responsive max-width="260">-->
+        <!--          <v-text-field-->
+        <!--            dense-->
+        <!--            flat-->
+        <!--            hide-details-->
+        <!--            rounded-->
+        <!--            solo-inverted-->
+        <!--          ></v-text-field>-->
+        <!--        </v-responsive>-->
+      </v-container>
+    </v-app-bar>
+
+    <v-main class="grey lighten-3">
+      <v-container>
+        <v-row>
+          <v-col cols="2">
+            <v-sheet rounded="lg">
+              <v-list color="transparent">
+                <v-list-item v-for="n in 5" :key="n" link>
+                  <v-list-item-content>
+                    <v-list-item-title> List Item {{ n }} </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+
+                <v-divider class="my-2"></v-divider>
+
+                <v-list-item link color="grey lighten-4">
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      Refresh
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+            </v-sheet>
+          </v-col>
+
+          <v-col>
+            <v-sheet min-height="70vh" rounded="lg">
+              <router-view></router-view>
+            </v-sheet>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import Vue from "vue";
-import SuiVue from "semantic-ui-vue";
-import axios from "axios";
-import VueAxios from "vue-axios";
-import VueMoment from "vue-moment";
-import Vue2Filters from "vue2-filters";
-
-import filters from "./filters";
-
-Vue.use(SuiVue);
-Vue.use(VueMoment);
-Vue.use(VueAxios, axios);
-Vue.use(Vue2Filters);
-Vue.use(filters);
-
 export default {
-  name: "app",
+  name: "App",
+
   components: {},
-  methods: {},
-  data() {
-    return {};
-  }
+
+  data: () => ({
+    links: ["Authors", "Works of Art"]
+  })
 };
 </script>
-
-<style lang="scss">
-.main-content {
-  padding-top: 4em;
-}
-</style>

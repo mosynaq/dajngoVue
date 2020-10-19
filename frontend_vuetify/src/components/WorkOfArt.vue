@@ -1,42 +1,9 @@
 <template>
-  <sui-card>
-    <sui-image :src="this.image" height="150" />
-    <sui-card-content>
-      <router-link
-        class="header"
-        :to="{ name: 'WorksOfArtSingle', params: { id: this.id } }"
-      >
-        {{ this.title }}
-      </router-link>
-      <sui-card-meta>
-        By {{ this.author.last_name + ", " + this.author.first_name }}
-      </sui-card-meta>
-
-      <sui-label
-        attached="top right"
-        color="black"
-        class="work-of-art-type-label"
-      >
-        <sui-icon name="book" v-if="this.type === 'book'" />
-        <sui-icon name="file" v-if="this.type === 'article'" />
-        {{ this.type | titleCase }}
-      </sui-label>
-
-      <sui-card-description>{{ this.description }}</sui-card-description>
-    </sui-card-content>
-    <sui-card-content extra>
-      <sui-rating
-        :rating="this.rating"
-        :max-rating="5"
-        :disabled="true"
-        icon="yellow star"
-      />
-      <span class="right floated">
-        <sui-icon name="dollar" />
-        {{ this.price }}
-      </span>
-    </sui-card-content>
-  </sui-card>
+  <v-card elevation="2">
+    <v-card-title>{{ this.title }}</v-card-title>
+    <v-card-subtitle>{{ this.price }}</v-card-subtitle>
+    <v-card-text>{{ this.description }}</v-card-text>
+  </v-card>
 </template>
 
 <script>

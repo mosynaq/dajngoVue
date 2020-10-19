@@ -1,22 +1,5 @@
 <template>
-  <sui-card>
-    <sui-card-content>
-      <!--      <sui-image :src="this.image" height="150"/>-->
-      <!--      <a class="header"> {{ this.last_name }}, {{ this.first_name }} </a>-->
-      <router-link
-        class="header"
-        :to="{ name: 'author_single', params: { id: this.id } }"
-      >
-        {{ this.last_name }}, {{ this.first_name }}
-      </router-link>
-      <sui-card-meta>
-        Born {{ this.date_of_birth | moment("YYYY, Qo MMMM") }}
-      </sui-card-meta>
-      <sui-card-description>
-        {{ this.bio | truncate(250) }}
-      </sui-card-description>
-    </sui-card-content>
-  </sui-card>
+  <v-card elevation="2"></v-card>
 </template>
 
 <script>

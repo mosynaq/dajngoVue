@@ -1,44 +1,35 @@
 <template>
-  <div>
-    <sui-card-group
-      :stackable="true"
-      class="centered doubling"
-      v-if="worksOfArt"
-    >
-      <WorkOfArt
-        v-for="workOfArt in worksOfArt"
-        :key="workOfArt.id"
-        :id="workOfArt.id"
-        :title="workOfArt.title"
-        :price="workOfArt.price"
-        :description="workOfArt.description"
-        :rating="workOfArt.rating"
-        :image="workOfArt.image"
-        :type="workOfArt.type"
-        :author="workOfArt.author"
-        class="animate animate__bounceInLeft"
-      />
-    </sui-card-group>
-
-    <div v-else>
-      <sui-card-group :stackable="true" class="centered doubling">
-        <WorkOfArtPlaceholder v-for="i in 6" :key="i" />
-      </sui-card-group>
-    </div>
-  </div>
+  <v-item-group>
+    <v-container fluid>
+      <v-row dense>
+        <v-col v-for="workOfArt in worksOfArt" :key="workOfArt.id">
+          <v-item>
+            <WorkOfArt
+              :id="workOfArt.id"
+              :title="workOfArt.title"
+              :price="workOfArt.price"
+              :description="workOfArt.description"
+              :rating="workOfArt.rating"
+              :image="workOfArt.image"
+              :type="workOfArt.type"
+              :author="workOfArt.author"
+            />
+          </v-item>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-item-group>
 </template>
 
 <script>
 import config from "../../config.json";
 import WorkOfArt from "../components/WorkOfArt.vue";
-import WorkOfArtPlaceholder from "@/components/WorkOfArtPlaceholder.vue";
 import axios from "axios";
 
 export default {
   name: "WorksOfArt",
   components: {
-    WorkOfArt,
-    WorkOfArtPlaceholder
+    WorkOfArt
   },
   data() {
     return {
