@@ -2,20 +2,16 @@
   <v-app id="inspire">
     <v-app-bar app color="white" flat>
       <v-container class="py-0 fill-height">
-        <v-btn text>
-          <router-link to="/">
-            <v-icon>mdi-home</v-icon>
-            Home</router-link>
+        <v-btn text @click="$router.push({ path: '/' })">
+          <v-icon>mdi-home</v-icon>
+          Home
         </v-btn>
-        <v-btn text>
-          <router-link to="authors">
-            <v-icon>mdi-account-edit</v-icon>
-            Authors
-          </router-link>
+        <v-btn text @click="$router.push('Authors')">
+          <v-icon>mdi-account-edit</v-icon>
+          Authors
         </v-btn>
-        <v-btn text>
-          <router-link to="worksofart">
-            <v-icon>mdi-book-multiple</v-icon>Works of Art</router-link>
+        <v-btn text @click="$router.push('worksofart')">
+          <v-icon>mdi-book-multiple</v-icon>Works of Art
         </v-btn>
 
         <v-spacer></v-spacer>
