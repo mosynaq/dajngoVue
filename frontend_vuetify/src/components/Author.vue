@@ -1,5 +1,25 @@
 <template>
-  <v-card elevation="2"></v-card>
+  <v-card>
+    <v-card-title>{{ this.last_name }}, {{ this.first_name }}</v-card-title>
+    <v-card-subtitle>
+      {{ this.date_of_birth | moment("YYYY, Qo MMMM") }}</v-card-subtitle
+    >
+    <v-card-text>{{ this.bio | truncate(250) }}</v-card-text>
+    <v-card-actions>
+      <v-btn
+        color="deep-purple lighten-2"
+        text
+        @click="
+          $router.push({
+            name: 'authorSingle',
+            params: { id: this.id.toString() }
+          })
+        "
+      >
+        Read on...
+      </v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>

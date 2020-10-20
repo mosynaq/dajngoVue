@@ -32,7 +32,7 @@ const routes = [
   },
   {
     path: "/authors/:id/",
-    name: "author_single",
+    name: "authorSingle",
     component: author_single
   }
 ];

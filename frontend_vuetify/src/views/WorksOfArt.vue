@@ -1,24 +1,24 @@
 <template>
-  <v-item-group>
-    <v-container fluid>
-      <v-row dense>
-        <v-col v-for="workOfArt in worksOfArt" :key="workOfArt.id">
-          <v-item>
-            <WorkOfArt
-              :id="workOfArt.id"
-              :title="workOfArt.title"
-              :price="workOfArt.price"
-              :description="workOfArt.description"
-              :rating="workOfArt.rating"
-              :image="workOfArt.image"
-              :type="workOfArt.type"
-              :author="workOfArt.author"
-            />
-          </v-item>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-item-group>
+  <v-container fluid>
+    <v-row :align="align">
+      <v-col
+        class="col-sm-6 col-md-4 col-12"
+        v-for="workOfArt in worksOfArt"
+        :key="workOfArt.id"
+      >
+        <WorkOfArt
+          :id="workOfArt.id"
+          :title="workOfArt.title"
+          :price="workOfArt.price"
+          :description="workOfArt.description"
+          :rating="workOfArt.rating"
+          :image="workOfArt.image"
+          :type="workOfArt.type"
+          :author="workOfArt.author"
+        />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>

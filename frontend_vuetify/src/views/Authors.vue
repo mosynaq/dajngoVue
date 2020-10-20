@@ -1,12 +1,26 @@
 <template lang="html">
-  <v-card elevation="2">
-    <v-card-title>Cafe Badilico</v-card-title>
-  </v-card>
+  <v-container>
+    <v-row>
+      <v-col
+        class="col-sm-6 col-md-4 col-12"
+        v-for="author in authors"
+        :key="author.id"
+      >
+        <Author
+          :id="author.id"
+          :first_name="author.first_name"
+          :last_name="author.last_name"
+          :date_of_birth="author.date_of_birth"
+          :bio="author.bio"
+        ></Author>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
 import config from "../../config.json";
-// import author from "../components/Author.vue";
+import Author from "../components/Author.vue";
 // import author_placeholder from "../components/AuthorPlaceholder.vue";
 import axios from "axios";
 // import VueQueryBuilder from "vue-query-builder";
@@ -14,7 +28,7 @@ import axios from "axios";
 export default {
   name: "authors",
   components: {
-    // author,
+    Author
     // author_placeholder,
     // VueQueryBuilder
   },

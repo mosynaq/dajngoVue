@@ -1,8 +1,27 @@
 <template>
   <v-card elevation="2">
-    <v-card-title>{{ this.title }}</v-card-title>
-    <v-card-subtitle>{{ this.price }}</v-card-subtitle>
-    <v-card-text>{{ this.description }}</v-card-text>
+    <v-img :src="this.image" height="175" width="300"></v-img>
+    <v-card-title>
+      <span>
+        <v-icon v-if="this.type == 'book'">mdi-book</v-icon>
+        <v-icon v-else>mdi-file</v-icon>
+        {{ this.title }}
+      </span>
+    </v-card-title>
+    <v-card-subtitle>
+      <span class="float-right">${{ this.price }}</span>
+      <v-rating
+        :value="this.rating"
+        color="amber"
+        dense
+        half-increments
+        readonly
+        size="16"
+      ></v-rating>
+    </v-card-subtitle>
+    <v-card-text>
+      {{ this.description | truncate(200) }}
+    </v-card-text>
   </v-card>
 </template>
 
