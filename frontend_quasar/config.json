@@ -1,0 +1,6 @@
+{
+  "api": {
+    "worksOfArt_url": "http://127.0.0.1:8000/api/works-of-art/?format=json",
+    "authors_url": "http://127.0.0.1:8000/api/authors/?format=json"
+  }
+}
