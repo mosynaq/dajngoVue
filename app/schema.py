@@ -20,16 +20,16 @@ class Query(graphene.ObjectType):
     author_by_id = graphene.Field(AuthorType, id=graphene.Int(required=True))
     all_authors = graphene.List(AuthorType)
 
-    def resolve_all_works_of_art(self, root):
+    def resolve_all_works_of_art(root, info):
         return models.WorkOfArt.objects.select_related("author").all()
 
-    def resolve_author_by_id(self, root, id):
+    def resolve_author_by_id(root, info, id):
         try:
             return models.Author.objects.get(id=id)
         except models.Author.DoesNotExist:
             return None
 
-    def resolve_all_authors(self, root):
+    def resolve_all_authors(root,info):
         return models.Author.objects.all()
 
 
