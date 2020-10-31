@@ -34,9 +34,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles',  # Required for GraphiQL
     'app.apps.AppConfig',
-    "rest_framework"
+    "rest_framework",
+    "graphene_django",
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,12 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "app.pagination.CursorPagination",
     "PAGE_SIZE": 6,
 }
+
+# region Graphene
+GRAPHENE = {
+    # "SCHEMA": "django_root.schema.schema"
+    "SCHEMA": "app.schema.schema",
+    "DJANGO_CHOICE_FIELD_ENUM_V3_NAMING": True,  # important: https://github.com/graphql-python/graphene-django/issues/185#issuecomment-673015048
+}
+# endregion
+

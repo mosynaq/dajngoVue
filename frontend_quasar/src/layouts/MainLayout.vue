@@ -15,6 +15,12 @@
           Works of Art and Creators Galary
         </q-toolbar-title>
 
+        <q-toggle
+          v-model="isDark"
+          color="blue"
+          label="Dark?"
+        />
+
       </q-toolbar>
     </q-header>
 
@@ -39,7 +45,7 @@
 
             <q-item to="/woa" exact clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="library_books" />
+                <q-icon name="book-open-variant" />
               </q-item-section>
 
               <q-item-section>
@@ -84,7 +90,13 @@ export default {
   components: { },
   data () {
     return {
+      isDark: false,
       leftDrawerOpen: false
+    }
+  },
+  watch: {
+    'isDark' (val) {
+      this.$q.dark.set(this.isDark)
     }
   }
 }
