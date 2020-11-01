@@ -142,8 +142,7 @@ REST_FRAMEWORK = {
 
 # region Graphene
 GRAPHENE = {
-    # "SCHEMA": "django_root.schema.schema"
-    "SCHEMA": "app.schema.schema",
+    "SCHEMA": "djangoVueProject.schema.schema",
     "DJANGO_CHOICE_FIELD_ENUM_V3_NAMING": True,  # important: https://github.com/graphql-python/graphene-django/issues/185#issuecomment-673015048
 }
 # endregion

@@ -1,6 +1,7 @@
-<template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+<template >
+  <q-layout view="lHh Lpr lFf" class="Lato">
+    <q-header elevated
+    >
       <q-toolbar>
         <q-btn
           flat
@@ -35,17 +36,17 @@
 
             <q-item to="/" exact clickable v-ripple >
               <q-item-section avatar>
-                <q-icon name="home" />
+                <q-icon name="mdi-home" />
               </q-item-section>
 
-              <q-item-section>
+              <q-item-section >
                 Home
               </q-item-section>
             </q-item>
 
             <q-item to="/woa" exact clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="book-open-variant" />
+                <q-icon name="mdi-book-open-variant" />
               </q-item-section>
 
               <q-item-section>
